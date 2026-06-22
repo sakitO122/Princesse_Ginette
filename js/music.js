@@ -17,7 +17,8 @@ function buildAudio(src) {
   const a    = new Audio(src);
   a.volume   = 0;
   a.preload  = 'metadata';
-  a.loop     = true;
+  a.loop     = false;
+  a.addEventListener('ended', () => nextTrack(true));
   return a;
 }
 
@@ -88,17 +89,27 @@ function togglePlayPause() {
   updateUI();
 }
 
-function nextTrack() {
-  pauseWithFadeOut(400);
-  setTimeout(() => {
+function nextTrack(fromEnded = false) {
+  const switchTrack = () => {
     currentTrackIdx = (currentTrackIdx + 1) % TRACKS.length;
     audioEl.src     = TRACKS[currentTrackIdx].src;
     audioEl.load();
+
     if (isPlaying) {
       audioEl.play().then(() => playWithFadeIn()).catch(() => {});
     }
+
     updateUI();
-  }, 450);
+  };
+
+  if (fromEnded) {
+    audioEl.volume = 0;
+    switchTrack();
+    return;
+  }
+
+  pauseWithFadeOut(400);
+  setTimeout(switchTrack, 450);
 }
 
 function updateUI() {

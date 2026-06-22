@@ -68,10 +68,20 @@ function attachCardFlip() {
       const cx = rect.left + rect.width  / 2;
       const cy = rect.top  + rect.height / 2;
 
-      card.classList.toggle('flipped');
+      const willOpen = !card.classList.contains('flipped');
+
+      if (willOpen) {
+        cards.forEach(otherCard => {
+          if (otherCard !== card) {
+            otherCard.classList.remove('flipped', 'glowing');
+          }
+        });
+      }
+
+      card.classList.toggle('flipped', willOpen);
 
       // Effets uniquement à l'ouverture (pas à la fermeture)
-      if (card.classList.contains('flipped')) {
+      if (willOpen) {
         qbBurst(cx, cy);
 
         card.classList.remove('glowing');
@@ -99,7 +109,27 @@ function attachBereniceReveal() {
   io.observe(section);
 }
 
+/* ===== Vidéos fluides dans les cartes ===== */
+function attachCardVideos() {
+  const videos = document.querySelectorAll('.qb-video');
+
+  videos.forEach(video => {
+    video.muted = true;
+    video.playsInline = true;
+
+    video.addEventListener('loadeddata', () => {
+      video.classList.add('is-ready');
+      video.play().catch(() => {});
+    });
+
+    video.addEventListener('error', () => {
+      video.classList.add('has-error');
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   attachCardFlip();
+  attachCardVideos();
   attachBereniceReveal();
 });
