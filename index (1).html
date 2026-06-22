@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pour Bérénice 💌</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Outfit:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ===== VARIABLES ===== */
+:root{
+  --bg-1:#1F0F1A;
+  --bg-2:#2C1424;
+  --bg-3:#3A1830;
+  --rose:#E8B4C0;
+  --rose-deep:#B23A52;
+  --rose-mid:#D4758A;
+  --gold:#CBA869;
+  --gold-light:#E2C88A;
+  --ivory:#F6ECE3;
+  --ink-soft:rgba(246,236,227,.68);
+  --ink-faint:rgba(246,236,227,.38);
+  --display-font:'Cormorant Garamond', serif;
+  --script-font:'Great Vibes', cursive;
+  --body-font:'Outfit', sans-serif;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg-1);
+  color:var(--ivory);
+  font-family:var(--body-font);
+  overflow-x:hidden;
+}
+
+/* ===== HIDDEN SECTIONS ===== */
+.section-hidden { display:none; }
+
+/* ========================================
+   ECRAN D'ENTREE
+   ======================================== */
+.entry{
+  min-height:100vh;
+  min-height:100svh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6vh 6vw;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 30% 18%, var(--bg-3), transparent 55%),
+    radial-gradient(circle at 80% 85%, var(--bg-2), transparent 50%),
+    var(--bg-1);
+}
+
+.ambient{ position:absolute; inset:0; pointer-events:none; }
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(232,180,192,.35), transparent 70%);
+  filter:blur(1px);
+  animation:floatParticle linear infinite alternate;
+}
+.p1{ width:90px;  height:90px;  top:12%; left:8%;  animation-duration:9s; }
+.p2{ width:50px;  height:50px;  top:70%; left:15%; animation-duration:7s;  animation-delay:1s; }
+.p3{ width:120px; height:120px; top:20%; left:80%; animation-duration:11s; animation-delay:.5s; }
+.p4{ width:60px;  height:60px;  top:78%; left:75%; animation-duration:8s;  animation-delay:2s; }
+.p5{ width:40px;  height:40px;  top:45%; left:5%;  animation-duration:6s;  animation-delay:1.5s; }
+.p6{ width:70px;  height:70px;  top:55%; left:90%; animation-duration:10s; }
+
+@keyframes floatParticle{
+  from{ transform:translateY(0) translateX(0); }
+  to{ transform:translateY(-26px) translateX(12px); }
+}
+
+.entry-content{
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:1.1rem; max-width:480px;
+}
+
+.heart-wrap{
+  position:relative;
+  width:clamp(210px, 48vw, 290px);
+  aspect-ratio:100/95;
+  margin-bottom:.4rem;
+}
+
+.heart-photo{
+  position:absolute; inset:0;
+  clip-path:url(#heartClip);
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(150deg, var(--rose-deep), var(--bg-3));
+  overflow:hidden;
+}
+.heart-photo .monogram{
+  font-family:var(--display-font);
+  font-style:italic; font-weight:600;
+  font-size:clamp(2.4rem, 9vw, 3.4rem);
+  color:rgba(246,236,227,.85);
+  opacity:0;
+  animation:photoReveal .9s ease forwards 1.6s;
+}
+.heart-photo img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center top;
+  opacity:0;
+  animation:photoReveal .9s ease forwards 1.6s;
+}
+
+.heart-outline{ position:absolute; inset:0; width:100%; height:100%; }
+.heart-path{
+  fill:none; stroke:var(--gold); stroke-width:1.6;
+  vector-effect:non-scaling-stroke;
+  stroke-dasharray:300; stroke-dashoffset:300;
+  animation:drawHeart 1.6s ease forwards .3s;
+}
+
+@keyframes drawHeart{ to{ stroke-dashoffset:0; } }
+@keyframes photoReveal{
+  from{ opacity:0; transform:scale(.86); }
+  to{ opacity:1; transform:scale(1); }
+}
+
+.eyebrow{
+  letter-spacing:.32em; text-transform:uppercase;
+  font-size:.78rem; color:var(--rose);
+  opacity:0; animation:fadeUp .8s ease forwards 2.3s;
+}
+.entry-name{
+  font-family:var(--display-font); font-style:italic; font-weight:600;
+  font-size:clamp(2.6rem, 9vw, 4.4rem); line-height:1.05;
+  opacity:0; animation:fadeUp .9s ease forwards 2.6s;
+}
+.entry-subtext{
+  font-size:clamp(.95rem, 2.2vw, 1.08rem); color:var(--ink-soft);
+  max-width:34ch; line-height:1.55;
+  opacity:0; animation:fadeUp .8s ease forwards 2.95s;
+}
+.cta{
+  margin-top:.8rem; padding:.95rem 2.6rem;
+  border-radius:999px; border:1px solid rgba(203,168,105,.55);
+  background:transparent; color:var(--ivory);
+  font-family:var(--body-font); font-size:.95rem; letter-spacing:.06em;
+  cursor:pointer; opacity:0;
+  animation:fadeUp .8s ease forwards 3.3s, glowPulse 2.6s ease-in-out infinite 4.1s;
+  transition:background .3s ease, color .3s ease, transform .25s ease;
+}
+.cta:hover{ background:var(--gold); color:var(--bg-1); transform:translateY(-2px); }
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(16px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+@keyframes glowPulse{
+  0%,100%{ box-shadow:0 0 0 0 rgba(203,168,105,.35); }
+  50%{ box-shadow:0 0 0 12px rgba(203,168,105,0); }
+}
+
+
+/* ========================================
+   WELCOME PAGE
+   ======================================== */
+.welcome-page{
+  min-height:100vh;
+  min-height:100svh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8vh 5vw 10vh;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(178,58,82,.18), transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(60,24,48,.7), transparent 55%),
+    var(--bg-1);
+}
+
+/* --- Fleurs décoratives dans les coins --- */
+.floral-corner{
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+}
+.floral-corner svg{
+  display:block;
+  animation:floralSway 5s ease-in-out infinite alternate;
+  transform-origin:center bottom;
+}
+.corner-tl{ top:-10px; left:-10px; }
+.corner-tr{ top:-10px; right:-10px; transform:scaleX(-1); }
+.corner-bl{ bottom:-10px; left:-10px; transform:scaleY(-1); }
+.corner-br{ bottom:-10px; right:-10px; transform:scale(-1,-1); }
+
+@keyframes floralSway{
+  from{ transform:rotate(-2deg); }
+  to{ transform:rotate(2deg); }
+}
+.corner-tr svg{ transform-origin:center bottom; }
+.corner-bl svg{ transform-origin:center top; }
+.corner-br svg{ transform-origin:center top; }
+
+/* --- Lumières scintillantes --- */
+.sparkle-layer{
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+  overflow:hidden;
+}
+.sparkle{
+  position:absolute;
+  width:4px; height:4px;
+  border-radius:50%;
+  background:var(--gold);
+  animation:sparkleTwinkle ease-in-out infinite;
+}
+
+@keyframes sparkleTwinkle{
+  0%,100%{ opacity:0; transform:scale(0); }
+  50%{ opacity:1; transform:scale(1); }
+}
+
+/* --- Coeurs flottants --- */
+.hearts-layer{
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+  overflow:hidden;
+}
+.floating-heart{
+  position:absolute;
+  font-size:1.4rem;
+  opacity:0;
+  animation:heartFloat linear infinite;
+  filter:drop-shadow(0 0 6px rgba(232,180,192,.4));
+}
+
+@keyframes heartFloat{
+  0%{ transform:translateY(0) scale(0); opacity:0; }
+  10%{ opacity:.85; transform:translateY(-8vh) scale(1); }
+  80%{ opacity:.5; }
+  100%{ transform:translateY(-95vh) scale(.6) rotate(20deg); opacity:0; }
+}
+
+/* --- Pétales qui tombent --- */
+.petals-layer{
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+  overflow:hidden;
+}
+.petal{
+  position:absolute;
+  top:-30px;
+  width:12px; height:16px;
+  border-radius:50% 50% 40% 40%;
+  opacity:.7;
+  animation:petalFall linear infinite;
+}
+
+@keyframes petalFall{
+  0%{ transform:translateY(-20px) rotate(0deg) translateX(0); opacity:.8; }
+  60%{ opacity:.6; }
+  100%{ transform:translateY(105vh) rotate(720deg) translateX(80px); opacity:0; }
+}
+
+/* --- Contenu central --- */
+.welcome-content{
+  position:relative; z-index:2;
+  max-width:640px;
+  width:100%;
+  display:flex; flex-direction:column; align-items:center; gap:1.6rem;
+}
+
+.welcome-tag{
+  font-family:var(--script-font);
+  font-size:clamp(3rem, 8vw, 4.8rem);
+  color:var(--gold);
+  line-height:1;
+  text-shadow:0 0 40px rgba(203,168,105,.35);
+  animation:fadeDown .9s ease forwards;
+}
+
+.welcome-divider{
+  display:flex; align-items:center; gap:1rem; width:100%;
+  max-width:340px;
+  opacity:0; animation:fadeUp .7s ease forwards .4s;
+}
+.welcome-divider::before,
+.welcome-divider::after{
+  content:''; flex:1; height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.divider-icon{ font-size:1.1rem; }
+
+.letter-card{
+  background:
+    linear-gradient(135deg, rgba(246,236,227,.055), rgba(203,168,105,.04));
+  border:1px solid rgba(203,168,105,.22);
+  border-radius:20px;
+  padding:clamp(1.8rem, 5vw, 3rem) clamp(1.6rem, 5vw, 2.8rem);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  max-width:600px;
+  width:100%;
+  opacity:0;
+  animation:cardReveal .9s ease forwards .7s;
+  box-shadow:
+    0 24px 64px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(246,236,227,.06);
+}
+
+@keyframes cardReveal{
+  from{ opacity:0; transform:translateY(22px) scale(.97); }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes fadeDown{
+  from{ opacity:0; transform:translateY(-14px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.letter-heading{
+  font-family:var(--script-font);
+  font-size:clamp(2rem, 5vw, 2.8rem);
+  color:var(--rose);
+  margin-bottom:1.2rem;
+  display:block;
+}
+.letter-body{
+  font-size:clamp(.93rem, 2vw, 1.06rem);
+  line-height:1.85;
+  color:var(--ivory);
+  text-align:left;
+}
+.letter-body p{
+  margin-bottom:1rem;
+}
+.letter-body p:last-child{ margin-bottom:0; }
+
+.letter-highlight{
+  color:var(--gold-light);
+  font-family:var(--display-font);
+  font-style:italic;
+  font-size:1.12em;
+}
+
+/* --- Compteur d'amour --- */
+.counter-section{
+  opacity:0;
+  animation:fadeUp .8s ease forwards 1.2s;
+  width:100%;
+  max-width:520px;
+}
+.counter-label{
+  text-align:center;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  font-size:.72rem;
+  color:var(--rose);
+  margin-bottom:1rem;
+}
+.counter-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:.7rem;
+}
+.counter-box{
+  background:rgba(246,236,227,.04);
+  border:1px solid rgba(203,168,105,.2);
+  border-radius:14px;
+  padding:1.1rem .6rem;
+  text-align:center;
+  display:flex; flex-direction:column; gap:.3rem;
+  backdrop-filter:blur(8px);
+  transition:border-color .3s;
+}
+.counter-box:hover{ border-color:rgba(203,168,105,.55); }
+.counter-num{
+  font-family:var(--display-font);
+  font-weight:600;
+  font-size:clamp(1.6rem, 4.5vw, 2.4rem);
+  color:var(--gold);
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.counter-unit{
+  font-size:.65rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+/* --- Bouton suite --- */
+.next-btn{
+  margin-top:.6rem;
+  padding:.9rem 2.4rem;
+  border-radius:999px;
+  border:1px solid rgba(203,168,105,.45);
+  background:transparent;
+  color:var(--ivory);
+  font-family:var(--body-font);
+  font-size:.92rem;
+  letter-spacing:.06em;
+  cursor:pointer;
+  opacity:0;
+  animation:fadeUp .7s ease forwards 1.6s;
+  transition:background .3s, color .3s, transform .2s;
+}
+.next-btn:hover{ background:var(--rose-deep); transform:translateY(-2px); }
+
+/* ===== MUSIC PLAYER ===== */
+.music-player{
+  position:fixed;
+  bottom:1.4rem;
+  right:1.4rem;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:.5rem;
+}
+.music-btn{
+  width:48px; height:48px;
+  border-radius:50%;
+  border:1px solid rgba(203,168,105,.55);
+  background:rgba(31,15,26,.85);
+  backdrop-filter:blur(10px);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  font-size:1.25rem;
+  transition:transform .2s, background .2s;
+  color:var(--gold);
+}
+.music-btn:hover{ transform:scale(1.1); background:rgba(58,24,48,.95); }
+.music-label{
+  font-size:.65rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-align:right;
+  max-width:120px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  transition:opacity .3s;
+}
+.music-wave{
+  display:flex; align-items:flex-end; gap:2px; height:14px;
+}
+.wave-bar{
+  width:3px; border-radius:2px;
+  background:var(--gold);
+  animation:waveAnim ease-in-out infinite alternate;
+}
+.wave-bar:nth-child(1){ height:4px; animation-duration:.5s; }
+.wave-bar:nth-child(2){ height:10px; animation-duration:.7s; }
+.wave-bar:nth-child(3){ height:7px; animation-duration:.6s; }
+.wave-bar:nth-child(4){ height:12px; animation-duration:.8s; }
+.wave-bar:nth-child(5){ height:5px; animation-duration:.55s; }
+.music-wave.paused .wave-bar{ animation-play-state:paused; height:4px; }
+
+@keyframes waveAnim{
+  from{ transform:scaleY(.4); }
+  to{ transform:scaleY(1); }
+}
+
+/* ===== NEXT PLACEHOLDER ===== */
+.next-placeholder{
+  min-height:50vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:4rem 6vw; text-align:center;
+  color:var(--ink-faint); font-size:.95rem;
+  border-top:1px dashed rgba(246,236,227,.1);
+}
+
+/* ===== UTILS ===== */
+@media (max-width:480px){
+  .counter-grid{ grid-template-columns:repeat(2, 1fr); }
+  .corner-tl svg, .corner-tr svg{ width:130px !important; height:130px !important; }
+  .corner-bl svg, .corner-br svg{ width:100px !important; height:100px !important; }
+}
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; transition:none !important; }
+  .heart-path{ stroke-dashoffset:0 !important; }
+  .welcome-content > *, .letter-card, .counter-section,
+  .next-btn, .welcome-tag, .welcome-divider{
+    opacity:1 !important; transform:none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Clip-path coeur (SVG invisible) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+      <path d="M0.50 0.889 C0.50 0.889 0.08 0.635 0.08 0.324 C0.08 0.166 0.196 0.05 0.35 0.05 C0.44 0.05 0.50 0.095 0.50 0.095 C0.50 0.095 0.56 0.05 0.65 0.05 C0.804 0.05 0.92 0.166 0.92 0.324 C0.92 0.635 0.50 0.889 0.50 0.889 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<!-- =============================
+     SECTION 1 — ÉCRAN D'ENTRÉE
+     ============================= -->
+<section class="entry" id="entry">
+  <div class="ambient" aria-hidden="true">
+    <span class="particle p1"></span><span class="particle p2"></span>
+    <span class="particle p3"></span><span class="particle p4"></span>
+    <span class="particle p5"></span><span class="particle p6"></span>
+  </div>
+  <div class="entry-content">
+    <div class="heart-wrap">
+      <div class="heart-photo">
+        <span class="monogram" aria-hidden="true">B</span>
+        <img src="assets/images/sa-photo.jpg" alt="Bérénice" onerror="this.style.display='none'">
+      </div>
+      <svg class="heart-outline" viewBox="0 0 100 95" aria-hidden="true">
+        <path class="heart-path" d="M50 88.9 C50 88.9 8 63.5 8 32.4 C8 16.6 19.6 5 35 5 C44 5 50 9.5 50 9.5 C50 9.5 56 5 65 5 C80.4 5 92 16.6 92 32.4 C92 63.5 50 88.9 50 88.9 Z"/>
+      </svg>
+    </div>
+    <p class="eyebrow">Pour toi,</p>
+    <h1 class="entry-name">Bérénice</h1>
+    <p class="entry-subtext">Quelque chose de précieux t'attend ici. Prends ton temps.</p>
+    <button class="cta" id="startBtn" type="button">Commencer ❤️</button>
+  </div>
+</section>
+
+
+<!-- =============================
+     SECTION 2 — WELCOME PAGE
+     ============================= -->
+<section class="welcome-page section-hidden" id="welcome">
+
+  <!-- Coins floraux -->
+  <div class="floral-corner corner-tl" aria-hidden="true">
+    <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tige principale -->
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Roses -->
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="10" fill="#B23A52" opacity=".9"/>
+        <circle cx="-4" cy="-3" r="7" fill="#C94F65" opacity=".85"/>
+        <circle cx="3" cy="-5" r="6" fill="#D4758A" opacity=".8"/>
+        <circle cx="-1" cy="-7" r="4" fill="#E8B4C0" opacity=".75"/>
+        <ellipse cx="0" cy="0" rx="10" ry="4" fill="#922B40" opacity=".3" transform="rotate(-20)"/>
+      </g>
+      <!-- Feuilles -->
+      <ellipse cx="100" cy="48" rx="12" ry="5" fill="#3A6B35" opacity=".75" transform="rotate(-40 100 48)"/>
+      <ellipse cx="70" cy="80" rx="10" ry="4" fill="#4A8040" opacity=".65" transform="rotate(-50 70 80)"/>
+      <!-- Cerisier -->
+      <g transform="translate(55,72)">
+        <circle cx="0" cy="0" r="7" fill="#F4A7B9" opacity=".85"/>
+        <circle cx="-4" cy="-2" r="5" fill="#F9C4D0" opacity=".75"/>
+        <circle cx="3" cy="-4" r="4" fill="#FAD4DC" opacity=".7"/>
+        <circle cx="-1" cy="-6" r="3" fill="#FDE8EC" opacity=".65"/>
+      </g>
+      <!-- Fleur tropicale -->
+      <g transform="translate(78,40)">
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF6B35" opacity=".75" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".7" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF6B35" opacity=".65" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".6" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="4" fill="#FFD700" opacity=".9"/>
+      </g>
+      <!-- Petits détails -->
+      <circle cx="110" cy="36" r="2" fill="#E8B4C0" opacity=".6"/>
+      <circle cx="48" cy="98" r="2.5" fill="#F4A7B9" opacity=".5"/>
+      <circle cx="32" cy="118" r="1.5" fill="#CBA869" opacity=".5"/>
+    </svg>
+  </div>
+
+  <div class="floral-corner corner-tr" aria-hidden="true">
+    <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="10" fill="#B23A52" opacity=".9"/>
+        <circle cx="-4" cy="-3" r="7" fill="#C94F65" opacity=".85"/>
+        <circle cx="3" cy="-5" r="6" fill="#D4758A" opacity=".8"/>
+        <circle cx="-1" cy="-7" r="4" fill="#E8B4C0" opacity=".75"/>
+      </g>
+      <ellipse cx="100" cy="48" rx="12" ry="5" fill="#3A6B35" opacity=".75" transform="rotate(-40 100 48)"/>
+      <ellipse cx="70" cy="80" rx="10" ry="4" fill="#4A8040" opacity=".65" transform="rotate(-50 70 80)"/>
+      <g transform="translate(55,72)">
+        <circle cx="0" cy="0" r="7" fill="#F4A7B9" opacity=".85"/>
+        <circle cx="-4" cy="-2" r="5" fill="#F9C4D0" opacity=".75"/>
+        <circle cx="3" cy="-4" r="4" fill="#FAD4DC" opacity=".7"/>
+      </g>
+      <g transform="translate(78,40)">
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".8"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".75" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".7" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".65" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".6" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="4" fill="#FFD700" opacity=".9"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="floral-corner corner-bl" aria-hidden="true">
+    <svg width="130" height="130" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="10" fill="#922B40" opacity=".85"/>
+        <circle cx="-4" cy="-3" r="7" fill="#B23A52" opacity=".8"/>
+        <circle cx="3" cy="-5" r="6" fill="#C94F65" opacity=".75"/>
+        <circle cx="-1" cy="-7" r="4" fill="#E8B4C0" opacity=".7"/>
+      </g>
+      <ellipse cx="100" cy="48" rx="12" ry="5" fill="#3A6B35" opacity=".7" transform="rotate(-40 100 48)"/>
+      <g transform="translate(55,72)">
+        <circle cx="0" cy="0" r="7" fill="#FFB7C5" opacity=".85"/>
+        <circle cx="-4" cy="-2" r="5" fill="#FFC8D3" opacity=".75"/>
+        <circle cx="3" cy="-4" r="4" fill="#FFD4DC" opacity=".7"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="floral-corner corner-br" aria-hidden="true">
+    <svg width="130" height="130" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="10" fill="#B23A52" opacity=".9"/>
+        <circle cx="-4" cy="-3" r="7" fill="#C94F65" opacity=".85"/>
+        <circle cx="3" cy="-5" r="6" fill="#D4758A" opacity=".8"/>
+        <circle cx="-1" cy="-7" r="4" fill="#E8B4C0" opacity=".75"/>
+      </g>
+      <ellipse cx="70" cy="80" rx="10" ry="4" fill="#4A8040" opacity=".65" transform="rotate(-50 70 80)"/>
+      <g transform="translate(78,40)">
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".8"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".75" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".7" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".65" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".6" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="4" fill="#FFD700" opacity=".9"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Sparkles -->
+  <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+
+  <!-- Coeurs flottants -->
+  <div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+
+  <!-- Pétales -->
+  <div class="petals-layer" id="petalsLayer" aria-hidden="true"></div>
+
+  <!-- Contenu principal -->
+  <div class="welcome-content">
+    <div class="welcome-tag">Welcome ❤️</div>
+
+    <div class="welcome-divider">
+      <span class="divider-icon">🌹</span>
+    </div>
+
+    <div class="letter-card">
+      <span class="letter-heading">Ma Princesse,</span>
+      <div class="letter-body">
+        <p>Si tu lis ces mots aujourd'hui, c'est que tu t'apprêtes à découvrir quelque chose qui vient du plus profond de mon cœur.</p>
+        <p>Ce n'est pas simplement un site.<br>
+        C'est <span class="letter-highlight">un voyage à travers les souvenirs, les émotions et les pensées</span> que j'ai souhaité rassembler pour une personne qui compte énormément pour moi.</p>
+        <p>Une personne dont le sourire illumine mes journées.<br>
+        Une personne dont la présence rend chaque instant plus précieux.<br>
+        Une personne que j'admire, que je respecte et qui occupe une place particulière dans mon cœur.</p>
+        <p style="text-align:center; font-family:var(--script-font); font-size:1.6rem; color:var(--rose); margin:0.5rem 0;">Cette personne, c'est toi.</p>
+        <p>Alors prends quelques instants, profite de chaque détail et laisse cette histoire te rappeler à quel point tu es spéciale.</p>
+        <p style="text-align:right; color:var(--gold-light); font-family:var(--display-font); font-style:italic; font-size:1.08rem;">Bienvenue, ma Princesse. ❤️</p>
+      </div>
+    </div>
+
+    <!-- Compteur -->
+    <div class="counter-section">
+      <p class="counter-label">⏳ Ensemble depuis</p>
+      <div class="counter-grid">
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-days">000</span>
+          <span class="counter-unit">Jours</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-hours">00</span>
+          <span class="counter-unit">Heures</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-minutes">00</span>
+          <span class="counter-unit">Minutes</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-seconds">00</span>
+          <span class="counter-unit">Secondes</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="next-btn" id="nextBtn" type="button">Continuer le voyage ✨</button>
+  </div>
+</section>
+
+
+<!-- =============================
+     PLACEHOLDER — PROCHAINE SECTION
+     ============================= -->
+<section class="next-placeholder section-hidden" id="next-placeholder">
+  <p>🚧 La prochaine section arrive ici — <em>Qui est Bérénice ?</em></p>
+</section>
+
+
+<!-- =============================
+     MUSIC PLAYER (fixe)
+     ============================= -->
+<div class="music-player" id="musicPlayer" role="region" aria-label="Lecteur musical">
+  <div class="music-label" id="musicLabel">Perfect — Ed Sheeran</div>
+  <div class="music-wave" id="musicWave">
+    <div class="wave-bar"></div><div class="wave-bar"></div>
+    <div class="wave-bar"></div><div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+  </div>
+  <button class="music-btn" id="musicBtn" aria-label="Lecture / Pause musique" title="Lecture / Pause">▶</button>
+</div>
+
+<!-- Audio elements -->
+<audio id="audio1" preload="metadata" loop>
+  <source src="assets/music/perfect.m4a" type="audio/mp4">
+</audio>
+<audio id="audio2" preload="metadata" loop>
+  <source src="assets/music/kiff_no_beat.m4a" type="audio/mp4">
+</audio>
+
+
+<!-- =============================
+     SCRIPTS
+     ============================= -->
+<script>
+/* ========= NAVIGATION PAR SECTION ========= */
+let currentSection = 'entry';
+
+function showSection(id){
+  document.getElementById(currentSection).classList.add('section-hidden');
+  const el = document.getElementById(id);
+  el.classList.remove('section-hidden');
+  el.scrollIntoView({ behavior:'smooth', block:'start' });
+  currentSection = id;
+}
+
+document.getElementById('startBtn').addEventListener('click', () => {
+  showSection('welcome');
+  startMusic();
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  showSection('next-placeholder');
+});
+
+/* ========= MUSIC PLAYER ========= */
+const audio1 = document.getElementById('audio1');
+const audio2 = document.getElementById('audio2');
+const musicBtn = document.getElementById('musicBtn');
+const musicLabel = document.getElementById('musicLabel');
+const musicWave = document.getElementById('musicWave');
+const tracks = [
+  { audio: audio1, label: 'Perfect — Ed Sheeran' },
+  { audio: audio2, label: 'Tu es dans pain — Kiff No Beat' }
+];
+let currentTrack = 0;
+let isPlaying = false;
+
+function startMusic(){
+  if(!isPlaying){
+    tracks[currentTrack].audio.volume = 0.45;
+    tracks[currentTrack].audio.play().then(() => {
+      isPlaying = true;
+      musicBtn.textContent = '⏸';
+      musicWave.classList.remove('paused');
+    }).catch(()=>{});
+  }
+}
+
+musicBtn.addEventListener('click', () => {
+  if(isPlaying){
+    tracks[currentTrack].audio.pause();
+    isPlaying = false;
+    musicBtn.textContent = '▶';
+    musicWave.classList.add('paused');
+  } else {
+    tracks[currentTrack].audio.play().then(() => {
+      isPlaying = true;
+      musicBtn.textContent = '⏸';
+      musicWave.classList.remove('paused');
+    }).catch(()=>{});
+  }
+});
+
+// Alterner les deux musiques en double-clic
+musicBtn.addEventListener('dblclick', (e) => {
+  e.preventDefault();
+  tracks[currentTrack].audio.pause();
+  tracks[currentTrack].audio.currentTime = 0;
+  currentTrack = (currentTrack + 1) % tracks.length;
+  musicLabel.textContent = tracks[currentTrack].label;
+  if(isPlaying) tracks[currentTrack].audio.play().catch(()=>{});
+});
+
+/* ========= COMPTEUR D'AMOUR ========= */
+// ⚠️ REMPLACE CETTE DATE par votre vraie date de début :
+// Format : new Date('AAAA-MM-JJ')
+const startDate = new Date('2024-01-01');
+
+function updateCounter(){
+  const now = new Date();
+  const diff = now - startDate;
+  if(diff < 0) return;
+  const days    = Math.floor(diff / (1000*60*60*24));
+  const hours   = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((diff % (1000*60)) / 1000);
+  document.getElementById('cnt-days').textContent    = String(days).padStart(3,'0');
+  document.getElementById('cnt-hours').textContent   = String(hours).padStart(2,'0');
+  document.getElementById('cnt-minutes').textContent = String(minutes).padStart(2,'0');
+  document.getElementById('cnt-seconds').textContent = String(seconds).padStart(2,'0');
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+
+/* ========= SPARKLES ========= */
+const sparkleLayer = document.getElementById('sparkleLayer');
+function createSparkle(){
+  const s = document.createElement('div');
+  s.className = 'sparkle';
+  s.style.left = Math.random()*100 + '%';
+  s.style.top  = Math.random()*100 + '%';
+  const size = 2 + Math.random()*4;
+  s.style.width = size + 'px';
+  s.style.height = size + 'px';
+  const duration = 1.5 + Math.random()*2.5;
+  const delay    = Math.random()*3;
+  s.style.animation = `sparkleTwinkle ${duration}s ease-in-out ${delay}s infinite`;
+  sparkleLayer.appendChild(s);
+}
+for(let i=0;i<50;i++) createSparkle();
+
+/* ========= COEURS FLOTTANTS ========= */
+const heartsLayer = document.getElementById('heartsLayer');
+const heartSymbols = ['❤️','💕','💗','💖','🩷','✨'];
+function spawnHeart(){
+  const h = document.createElement('div');
+  h.className = 'floating-heart';
+  h.textContent = heartSymbols[Math.floor(Math.random()*heartSymbols.length)];
+  h.style.left = 5 + Math.random()*90 + '%';
+  h.style.bottom = '0px';
+  h.style.fontSize = (1 + Math.random()*1.4) + 'rem';
+  const dur = 5 + Math.random()*5;
+  const delay = Math.random()*2;
+  h.style.animation = `heartFloat ${dur}s ease-in ${delay}s`;
+  heartsLayer.appendChild(h);
+  setTimeout(() => h.remove(), (dur + delay + 0.5)*1000);
+}
+// Lancer des coeurs toutes les 1.2s
+let heartInterval = null;
+const welcome = document.getElementById('welcome');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting && !heartInterval){
+      heartInterval = setInterval(spawnHeart, 1200);
+    } else if(!entry.isIntersecting && heartInterval){
+      clearInterval(heartInterval);
+      heartInterval = null;
+    }
+  });
+}, { threshold:0.2 });
+observer.observe(welcome);
+
+/* ========= PÉTALES ========= */
+const petalsLayer = document.getElementById('petalsLayer');
+const petalColors = [
+  '#F4A7B9','#FAD4DC','#E8B4C0','#FFB7C5',  // rose/cerisier
+  '#B23A52','#C94F65',                         // rose profond
+  '#FF8C42','#FFD166',                         // tropical
+  '#E2C88A'                                    // doré
+];
+function spawnPetal(){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.style.left = Math.random()*100 + '%';
+  p.style.background = petalColors[Math.floor(Math.random()*petalColors.length)];
+  const size = 8 + Math.random()*10;
+  p.style.width  = size + 'px';
+  p.style.height = (size*1.3) + 'px';
+  p.style.borderRadius = '50% 50% 40% 40%';
+  const dur = 6 + Math.random()*7;
+  const delay = Math.random()*3;
+  p.style.animation = `petalFall ${dur}s linear ${delay}s infinite`;
+  p.style.opacity = (.45 + Math.random()*.35).toString();
+  petalsLayer.appendChild(p);
+  setTimeout(() => p.remove(), (dur + delay + 0.5)*1000);
+}
+// Pétales toutes les 0.8s
+let petalInterval = null;
+const observerPetal = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting && !petalInterval){
+      petalInterval = setInterval(spawnPetal, 800);
+    } else if(!entry.isIntersecting && petalInterval){
+      clearInterval(petalInterval);
+      petalInterval = null;
+    }
+  });
+}, { threshold:0.1 });
+observerPetal.observe(welcome);
+</script>
+</body>
+</html>

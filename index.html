@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pour Bérénice 💌</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Outfit:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    /* Flash chiffres compteur */
+    @keyframes numFlash {
+      0%   { color: var(--gold); }
+      30%  { color: #fff; }
+      100% { color: var(--gold); }
+    }
+    .counter-num.flash { animation: numFlash .35s ease; }
+
+    /* Bérénice placeholder élégant */
+    .berenice-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh; gap: 1.4rem;
+      text-align: center; padding: 6vh 6vw;
+    }
+    .berenice-placeholder .ph-title {
+      font-family: var(--script-font);
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      color: var(--gold);
+    }
+    .berenice-placeholder .ph-sub {
+      color: var(--ink-soft); max-width: 36ch; line-height: 1.7;
+    }
+    .berenice-placeholder .ph-icon {
+      font-size: 3rem; animation: heartBeat 1.4s ease-in-out infinite;
+    }
+    .ph-back {
+      margin-top: 1rem;
+      padding: .7rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(203,168,105,.4);
+      background: transparent; color: var(--ink-soft);
+      font-family: var(--body-font); font-size: .85rem;
+      cursor: pointer; transition: color .3s, border-color .3s;
+    }
+    .ph-back:hover { color: var(--ivory); border-color: rgba(203,168,105,.7); }
+  </style>
+</head>
+<body>
+
+<!-- ======================================
+     SVG DEFS — Clip-path cœur
+     ====================================== -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <defs>
+    <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+      <path d="M0.50 0.889 C0.50 0.889 0.08 0.635 0.08 0.324 C0.08 0.166 0.196 0.05 0.35 0.05 C0.44 0.05 0.50 0.095 0.50 0.095 C0.50 0.095 0.56 0.05 0.65 0.05 C0.804 0.05 0.92 0.166 0.92 0.324 C0.92 0.635 0.50 0.889 0.50 0.889 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<!-- ======================================
+     OVERLAY DE TRANSITION
+     ====================================== -->
+<div class="page-overlay" id="pageOverlay" aria-hidden="true"></div>
+
+<!-- ======================================
+     LECTEUR MUSICAL (fixe)
+     ====================================== -->
+<div class="music-player" id="musicPlayer" role="region" aria-label="Lecteur musical">
+  <div class="music-pill">
+    <button class="music-play-btn" id="musicPlayBtn" aria-label="Lecture / Pause">▶</button>
+    <div class="music-info">
+      <span class="music-title" id="musicTitle">Perfect — Ed Sheeran</span>
+      <div class="music-wave paused" id="musicWave">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+    </div>
+    <button class="music-skip" id="musicSkipBtn" aria-label="Piste suivante" title="Piste suivante">⏭</button>
+  </div>
+</div>
+
+
+<!-- ======================================================
+     SECTION 1 — ÉCRAN D'ENTRÉE
+     ====================================================== -->
+<section class="section active" id="entry" aria-label="Écran d'entrée">
+
+  <div class="ambient" aria-hidden="true">
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+    <span class="particle p6"></span>
+  </div>
+
+  <div class="entry-content">
+    <!-- Cœur avec photo -->
+    <div class="heart-wrap">
+      <div class="heart-photo">
+        <span class="monogram" aria-hidden="true">B</span>
+        <img src="assets/images/image copy.png"
+             alt="Bérénice"
+             onerror="this.style.display='none'">
+      </div>
+      <svg class="heart-outline" viewBox="0 0 100 95" aria-hidden="true">
+        <path class="heart-path"
+              d="M50 88.9 C50 88.9 8 63.5 8 32.4 C8 16.6 19.6 5 35 5
+                 C44 5 50 9.5 50 9.5 C50 9.5 56 5 65 5
+                 C80.4 5 92 16.6 92 32.4 C92 63.5 50 88.9 50 88.9 Z"/>
+      </svg>
+    </div>
+
+    <p class="eyebrow">Pour toi,</p>
+    <h1 class="entry-name">Bérénice</h1>
+    <p class="entry-subtext">Quelque chose de précieux t'attend ici. Prends ton temps.</p>
+
+    <button class="btn" id="startBtn" type="button" aria-label="Commencer le voyage">
+      Commencer ❤️
+    </button>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     SECTION 2 — WELCOME
+     ====================================================== -->
+<section class="section" id="welcome" aria-label="Page de bienvenue">
+
+  <!-- Coins floraux -->
+  <div class="floral-corner corner-tl" aria-hidden="true">
+    <svg width="170" height="170" viewBox="0 0 160 160" fill="none">
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="10" fill="#B23A52" opacity=".9"/>
+        <circle cx="-4" cy="-3" r="7" fill="#C94F65" opacity=".85"/>
+        <circle cx="3" cy="-5" r="6" fill="#D4758A" opacity=".8"/>
+        <circle cx="-1" cy="-7" r="4" fill="#E8B4C0" opacity=".75"/>
+        <ellipse cx="0" cy="0" rx="10" ry="4" fill="#922B40" opacity=".25" transform="rotate(-20)"/>
+      </g>
+      <ellipse cx="100" cy="48" rx="12" ry="5" fill="#3A6B35" opacity=".75" transform="rotate(-40 100 48)"/>
+      <ellipse cx="70"  cy="80" rx="10" ry="4" fill="#4A8040" opacity=".65" transform="rotate(-50 70 80)"/>
+      <g transform="translate(55,72)">
+        <circle cx="0" cy="0" r="7" fill="#F4A7B9" opacity=".85"/>
+        <circle cx="-4" cy="-2" r="5" fill="#F9C4D0" opacity=".75"/>
+        <circle cx="3" cy="-4" r="4" fill="#FAD4DC" opacity=".7"/>
+        <circle cx="-1" cy="-6" r="3" fill="#FDE8EC" opacity=".65"/>
+      </g>
+      <g transform="translate(78,40)">
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".8"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF6B35" opacity=".75" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".7"  transform="rotate(144)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF6B35" opacity=".65" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".6"  transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="4" fill="#FFD700" opacity=".9"/>
+      </g>
+      <circle cx="110" cy="36" r="2"   fill="#E8B4C0" opacity=".6"/>
+      <circle cx="48"  cy="98" r="2.5" fill="#F4A7B9" opacity=".5"/>
+      <circle cx="32"  cy="118" r="1.5" fill="#CBA869" opacity=".5"/>
+    </svg>
+  </div>
+
+  <div class="floral-corner corner-tr" aria-hidden="true">
+    <svg width="170" height="170" viewBox="0 0 160 160" fill="none">
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="10" fill="#922B40" opacity=".9"/>
+        <circle cx="-4" cy="-3" r="7" fill="#B23A52" opacity=".85"/>
+        <circle cx="3" cy="-5" r="6" fill="#C94F65" opacity=".8"/>
+        <circle cx="-1" cy="-7" r="4" fill="#E8B4C0" opacity=".75"/>
+      </g>
+      <ellipse cx="100" cy="48" rx="12" ry="5" fill="#3A6B35" opacity=".75" transform="rotate(-40 100 48)"/>
+      <ellipse cx="70"  cy="80" rx="10" ry="4" fill="#4A8040" opacity=".65" transform="rotate(-50 70 80)"/>
+      <g transform="translate(55,72)">
+        <circle cx="0" cy="0" r="7" fill="#FFB7C5" opacity=".85"/>
+        <circle cx="-4" cy="-2" r="5" fill="#FFC8D3" opacity=".75"/>
+        <circle cx="3" cy="-4" r="4" fill="#FFD4DC" opacity=".7"/>
+      </g>
+      <g transform="translate(78,40)">
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".8"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".75" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".7"  transform="rotate(144)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".65" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".6"  transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="4" fill="#FFD700" opacity=".9"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="floral-corner corner-bl" aria-hidden="true">
+    <svg width="130" height="130" viewBox="0 0 160 160" fill="none">
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="9"  fill="#B23A52" opacity=".85"/>
+        <circle cx="-4" cy="-3" r="6" fill="#C94F65" opacity=".8"/>
+        <circle cx="3" cy="-5"  r="5" fill="#D4758A" opacity=".75"/>
+        <circle cx="-1" cy="-7" r="3" fill="#E8B4C0" opacity=".7"/>
+      </g>
+      <ellipse cx="100" cy="48" rx="11" ry="4" fill="#3A6B35" opacity=".7" transform="rotate(-40 100 48)"/>
+      <g transform="translate(55,72)">
+        <circle cx="0" cy="0" r="7" fill="#F4A7B9" opacity=".85"/>
+        <circle cx="-4" cy="-2" r="4" fill="#F9C4D0" opacity=".75"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="floral-corner corner-br" aria-hidden="true">
+    <svg width="130" height="130" viewBox="0 0 160 160" fill="none">
+      <path d="M10 150 Q40 100 80 60 Q110 30 140 10" stroke="#5A3A2A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(132,12)">
+        <circle cx="0" cy="0" r="10" fill="#B23A52" opacity=".9"/>
+        <circle cx="-4" cy="-3" r="7" fill="#C94F65" opacity=".85"/>
+        <circle cx="3" cy="-5" r="6" fill="#D4758A" opacity=".8"/>
+        <circle cx="-1" cy="-7" r="4" fill="#E8B4C0" opacity=".75"/>
+      </g>
+      <ellipse cx="70" cy="80" rx="10" ry="4" fill="#4A8040" opacity=".65" transform="rotate(-50 70 80)"/>
+      <g transform="translate(78,40)">
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".8"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".75" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".7"  transform="rotate(144)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FFD166" opacity=".65" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="9" fill="#FF8C42" opacity=".6"  transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="4" fill="#FFD700" opacity=".9"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Couches d'ambiance -->
+  <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+  <div class="hearts-layer"  id="heartsLayer"  aria-hidden="true"></div>
+  <div class="petals-layer"  id="petalsLayer"  aria-hidden="true"></div>
+
+  <!-- Contenu central -->
+  <div class="welcome-content">
+
+    <div class="welcome-tag">Welcome ❤️</div>
+
+    <div class="welcome-divider">
+      <span class="divider-icon">🌹</span>
+    </div>
+
+    <div class="letter-card">
+      <span class="letter-heading">Ma Princesse,</span>
+      <div class="letter-body">
+        <p>Si tu lis ces mots aujourd'hui, c'est que tu t'apprêtes à découvrir quelque chose qui vient
+           du plus profond de mon cœur.</p>
+
+        <p>Ce n'est pas simplement un site.<br>
+           C'est <span class="letter-highlight">un voyage à travers les souvenirs, les émotions
+           et les pensées</span> que j'ai souhaité rassembler pour une personne
+           qui compte énormément pour moi.</p>
+
+        <p>Une personne dont le sourire illumine mes journées.<br>
+           Une personne dont la présence rend chaque instant plus précieux.<br>
+           Une personne que j'admire, que je respecte et qui occupe une place
+           particulière dans mon cœur.</p>
+
+        <p class="letter-centre">Cette personne, c'est toi.</p>
+
+        <p>Alors prends quelques instants, profite de chaque détail et laisse
+           cette histoire te rappeler à quel point tu es spéciale.</p>
+
+        <p class="letter-signature">Bienvenue, ma Princesse. ❤️</p>
+      </div>
+    </div>
+
+    <!-- Compteur -->
+    <div class="counter-section">
+      <p class="counter-label">⏳ Ensemble depuis</p>
+      <div class="counter-grid">
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-days">000</span>
+          <span class="counter-unit">Jours</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-hours">00</span>
+          <span class="counter-unit">Heures</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-minutes">00</span>
+          <span class="counter-unit">Minutes</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="cnt-seconds">00</span>
+          <span class="counter-unit">Secondes</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn" id="nextBtn" type="button">
+      Continuer le voyage ✨
+    </button>
+
+  </div>
+</section>
+
+
+<!-- ======================================================
+     SECTION 3 — QUI EST BÉRÉNICE ?
+     ====================================================== -->
+<section class="section" id="berenice-section" aria-label="Qui est Bérénice">
+
+  <!-- Couche pour les éclats (cœurs/pétales) au clic -->
+  <div class="qb-burst-layer" id="qbBurstLayer" aria-hidden="true"></div>
+
+  <div class="qb-content">
+    <h2 class="qb-title anim-fade-up">Qui est Bérénice ?</h2>
+    <p class="qb-intro anim-fade-up">
+      Certaines personnes se décrivent avec des mots.<br>
+      Toi, il faudrait des pages entières pour raconter tout ce qui te rend exceptionnelle.<br>
+      Voici quelques-unes des qualités qui font de toi une personne unique.
+    </p>
+
+    <div class="qb-grid">
+
+      <button class="qb-card" type="button" data-card="sourire" aria-label="Son sourire">
+        <div class="qb-card-inner">
+          <div class="qb-face qb-face-front">
+            <img src="assets/images/sourire-photo.png" alt="Bérénice qui sourit" class="qb-photo">
+            <div class="qb-front-shade"></div>
+            <div class="qb-front-label">
+              <span class="qb-icon">😊</span>
+              <span class="qb-front-title">Son sourire</span>
+            </div>
+          </div>
+          <div class="qb-face qb-face-back">
+            <span class="qb-icon">😊</span>
+            <h3 class="qb-back-title">Son sourire</h3>
+            <p class="qb-back-text">Ton sourire est cette petite lumière capable d'illuminer les journées les plus ordinaires et de rendre chaque instant plus doux.</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="qb-card" type="button" data-card="gentillesse" aria-label="Sa gentillesse">
+        <div class="qb-card-inner">
+          <div class="qb-face qb-face-front">
+            <img src="assets/images/naturelle-photo.png" alt="Photo naturelle de Bérénice" class="qb-photo">
+            <div class="qb-front-shade"></div>
+            <div class="qb-front-label">
+              <span class="qb-icon">💕</span>
+              <span class="qb-front-title">Sa gentillesse</span>
+            </div>
+          </div>
+          <div class="qb-face qb-face-back">
+            <span class="qb-icon">💕</span>
+            <h3 class="qb-back-title">Sa gentillesse</h3>
+            <p class="qb-back-text">Tu possèdes un cœur rempli de bienveillance. Tu prends soin des autres sans même t'en rendre compte.</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="qb-card" type="button" data-card="intelligence" aria-label="Son intelligence">
+        <div class="qb-card-inner">
+          <div class="qb-face qb-face-front">
+            <img src="assets/images/elegante-photo.png" alt="Bérénice pensive" class="qb-photo">
+            <div class="qb-front-shade"></div>
+            <div class="qb-front-label">
+              <span class="qb-icon">🧠</span>
+              <span class="qb-front-title">Son intelligence</span>
+            </div>
+          </div>
+          <div class="qb-face qb-face-back">
+            <span class="qb-icon">🧠</span>
+            <h3 class="qb-back-title">Son intelligence</h3>
+            <p class="qb-back-text">Ton intelligence ne se limite pas à ce que tu sais. Elle se voit dans ta façon de comprendre, d'apprendre et de voir le monde.</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="qb-card" type="button" data-card="courage" aria-label="Son courage">
+        <div class="qb-card-inner">
+          <div class="qb-face qb-face-front">
+            <img src="assets/images/naturelle-photo.png" alt="Bérénice pleine de détermination" class="qb-photo">
+            <div class="qb-front-shade"></div>
+            <div class="qb-front-label">
+              <span class="qb-icon">🌟</span>
+              <span class="qb-front-title">Son courage</span>
+            </div>
+          </div>
+          <div class="qb-face qb-face-back">
+            <span class="qb-icon">🌟</span>
+            <h3 class="qb-back-title">Son courage</h3>
+            <p class="qb-back-text">Même lorsque les choses deviennent difficiles, tu trouves toujours la force d'avancer avec détermination.</p>
+          </div>
+        </div>
+      </button>
+
+      <button class="qb-card" type="button" data-card="beaute" aria-label="Sa beauté intérieure">
+        <div class="qb-card-inner">
+          <div class="qb-face qb-face-front">
+            <img src="assets/images/elegante-photo.png" alt="Bérénice élégante" class="qb-photo">
+            <div class="qb-front-shade"></div>
+            <div class="qb-front-label">
+              <span class="qb-icon">👑</span>
+              <span class="qb-front-title">Sa beauté intérieure</span>
+            </div>
+          </div>
+          <div class="qb-face qb-face-back">
+            <span class="qb-icon">👑</span>
+            <h3 class="qb-back-title">Sa beauté intérieure</h3>
+            <p class="qb-back-text">Ce qui te rend réellement magnifique n'est pas ce que l'on voit, mais tout ce que tu portes dans ton cœur.</p>
+          </div>
+        </div>
+      </button>
+
+    </div>
+
+    <button class="ph-back btn" data-goto="welcome" type="button">← Retour</button>
+  </div>
+</section>
+
+<!-- ======================================
+     SCRIPTS
+     ====================================== -->
+<script src="js/counter.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/music.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
