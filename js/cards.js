@@ -115,9 +115,15 @@ function attachCardVideos() {
 
   videos.forEach(video => {
     video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
     video.playsInline = true;
+    video.removeAttribute('controls');
 
     video.addEventListener('loadeddata', () => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.volume = 0;
       video.classList.add('is-ready');
       video.play().catch(() => {});
     });

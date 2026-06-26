@@ -197,9 +197,64 @@ function onSectionEnter(id) {
       // Future : initialiser les cartes interactives
       break;
 
+    case 'timeline':
+      initStoryTimeline();
+      break;
+
     default:
       break;
   }
+}
+
+/* ============================================================
+   TIMELINE "NOTRE HISTOIRE"
+   ============================================================ */
+
+let storyTimelineReady = false;
+let storyLineUpdater = null;
+
+function initStoryTimeline() {
+  const timeline = document.getElementById('storyTimeline');
+  const progress = document.getElementById('storyLineProgress');
+  const items = document.querySelectorAll('.story-item');
+  const heading = document.querySelector('#timeline .story-heading');
+  const ending = document.querySelector('.story-ending');
+
+  if (!timeline || !progress) return;
+
+  if (!storyTimelineReady) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.22 });
+
+    items.forEach(item => revealObserver.observe(item));
+    if (heading) revealObserver.observe(heading);
+    if (ending) revealObserver.observe(ending);
+
+    storyTimelineReady = true;
+  }
+
+  if (storyLineUpdater) {
+    window.removeEventListener('scroll', storyLineUpdater);
+    window.removeEventListener('resize', storyLineUpdater);
+  }
+
+  storyLineUpdater = () => {
+    const rect = timeline.getBoundingClientRect();
+    const viewportMiddle = window.innerHeight * 0.62;
+    const total = Math.max(rect.height - viewportMiddle, 1);
+    const current = Math.min(Math.max(viewportMiddle - rect.top, 0), total);
+    const pct = (current / total) * 100;
+    progress.style.height = pct + '%';
+  };
+
+  storyLineUpdater();
+  window.addEventListener('scroll', storyLineUpdater, { passive: true });
+  window.addEventListener('resize', storyLineUpdater);
 }
 
 /* ============================================================
